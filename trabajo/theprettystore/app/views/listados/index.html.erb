@@ -1,0 +1,25 @@
+<div class="center">
+
+        <div class="row">
+          <% @listados.each do |listado| %>
+              <div class="col-md-3">
+
+                <div class="thumbnail">
+                  <%= image_tag (listado.image.url(:medium)) %>
+                  <div class="caption">
+                    <h3><%= listado.name %></h3>
+                    <p><%= number_to_currency(listado.price, :unit => " € ") %></p>
+                    <%= link_to 'Show', listado, class:'btn btn-link' %>
+                    <%= link_to 'Edit', edit_listado_path(listado), class:'btn btn-link' %>
+                    <%= link_to 'Destroy', listado, class:'btn btn-link', method: :delete, data: { confirm: 'Are you sure?' } %>
+
+                  </div>
+                </div>
+
+              </div>
+
+          <% end %>
+        </div>
+        <br>
+</div>
+<%= link_to 'New Listado', new_listado_path, class:'btn btn-link' %>
